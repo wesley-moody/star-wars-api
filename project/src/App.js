@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar.js";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Container } from "semantic-ui-react";
+import Home from "./components/Home";
+import People from "./components/People";
+import Planets from "./components/Planets";
 
 function App() {
   //  State variables all go here with initial state == empty array
@@ -37,9 +40,15 @@ function App() {
         <Navbar />
         <Container>
           <Switch>
-            <Route></Route>
-            <Route></Route>
-            <Route></Route>
+            <Route exact path='/'>
+              <Home />
+            </Route>
+            <Route exact path='/people'>
+              <People />
+            </Route>
+            <Route exact path='/planets'>
+              <Planets />
+            </Route>
           </Switch>
         </Container>
       </Router>
