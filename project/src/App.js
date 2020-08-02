@@ -5,6 +5,7 @@ import { Container, Dimmer, Loader } from "semantic-ui-react";
 import Home from "./components/Home";
 import People from "./components/People";
 import Planets from "./components/Planets";
+import './App.css';
 
 function App() {
   //  State variables all go here with initial state == empty array
