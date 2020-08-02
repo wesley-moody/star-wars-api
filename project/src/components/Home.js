@@ -1,8 +1,9 @@
 import React from "react";
+import '../App.css';
 
 export default function Home() {
   return (
-    <div>
+    <div id='home'>
       <h1>Star Wars Database</h1>
       <p>
         Leave that to me! Damn fool. I knew that you were going to say that!
@@ -40,6 +41,11 @@ export default function Home() {
         transport! I'm saved! Over here! Help! Please, help! Artoo-Detoo! It's
         you! It's you!
       </p>
+      <div className='extra'>        
+      </div>
+    
+
+
     </div>
   );
 }
