@@ -29,6 +29,7 @@ function App() {
 
     fetchPeople();
     fetchPlanets();
+    setLoading(false);
     //  Second arg is empty dependency array since only called once when component mounts to DOM
   }, []);
   // console.log("people", people);
@@ -39,17 +40,23 @@ function App() {
       <Router>
         <Navbar />
         <Container>
-          <Switch>
-            <Route exact path='/'>
-              <Home />
-            </Route>
-            <Route exact path='/people'>
-              <People />
-            </Route>
-            <Route exact path='/planets'>
-              <Planets />
-            </Route>
-          </Switch>
+          {loading ? (
+            <Dimmer active inverted>
+              <Loader inverted>Loading</Loader>
+            </Dimmer>
+          ) : (
+            <Switch>
+              <Route exact path='/'>
+                <Home />
+              </Route>
+              <Route exact path='/people'>
+                <People data={people} />
+              </Route>
+              <Route exact path='/planets'>
+                <Planets data={planets} />
+              </Route>
+            </Switch>
+          )}
         </Container>
       </Router>
     </>
