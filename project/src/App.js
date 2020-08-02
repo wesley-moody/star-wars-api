@@ -19,17 +19,19 @@ function App() {
       let res = await fetch("https://swapi.dev/api/people");
       let data = await res.json();
       setPeople(data.results);
+      setLoading(false);
     }
 
     async function fetchPlanets() {
       let res = await fetch("https://swapi.dev/api/planets");
       let data = await res.json();
       setPlanets(data.results);
+      setLoading(false);
     }
 
     fetchPeople();
     fetchPlanets();
-    setLoading(false);
+
     //  Second arg is empty dependency array since only called once when component mounts to DOM
   }, []);
   // console.log("people", people);
