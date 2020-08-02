@@ -35,6 +35,13 @@ function App() {
     <>
       <Router>
         <Navbar />
+        <Container>
+          <Switch>
+            <Route></Route>
+            <Route></Route>
+            <Route></Route>
+          </Switch>
+        </Container>
       </Router>
     </>
   );
