@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Navbar from "./components/Navbar.js";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Container, Dimmer, Loader } from "semantic-ui-react";
@@ -16,22 +17,29 @@ function App() {
 
   useEffect(() => {
     //  Callback function for first arg
-    async function fetchPeople() {
-      let res = await fetch("https://swapi.dev/api/people");
-      let data = await res.json();
-      setPeople(data.results);
-      setLoading(false);
-    }
+    axios
+      .get("https://swapi.dev/api/people")
+      .then((response) => {
+        setPeople(response.data.results);
+        axios.get("https://swapi.dev/api/planets").then((res) => {
+          setPlanets(res.data.results);
+          setLoading(false);
+        });
+        console.log("TEST", setPlanets);
+        console.log("Test", setPeople);
+      })
+      .catch((error) => {
+        console.log("No people available", error);
+      });
 
-    async function fetchPlanets() {
-      let res = await fetch("https://swapi.dev/api/planets");
-      let data = await res.json();
-      setPlanets(data.results);
-      setLoading(false);
-    }
+    // async function fetchPlanets() {
+    //   let res = await fetch("https://swapi.dev/api/planets");
+    //   let data = await res.json();
+    //   setPlanets(data.results);
+    //   setLoading(false);
+    // }
 
-    fetchPeople();
-    fetchPlanets();
+    // fetchPlanets();
 
     //  Second arg is empty dependency array since only called once when component mounts to DOM
   }, []);
@@ -62,8 +70,7 @@ function App() {
           )}
         </Container>
       </Router>
-      <>        
-      </>
+      <></>
     </div>
   );
 }

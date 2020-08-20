@@ -19,6 +19,8 @@ export default function Planets({ data }) {
                     <p>{planets.diameter}</p>
                     <strong>Population</strong>
                     <p>{planets.population}</p>
+                    <strong>Orbital Period</strong>
+                    <p>{planets.orbital_period + " days"}</p>
                   </Card.Description>
                 </Card.Content>
               </Card>
